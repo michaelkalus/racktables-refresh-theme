@@ -14,6 +14,10 @@ It restyles the stock interface without touching RackTables core files.
 - **Tables:** muted headers, stronger zebra striping, row separators, row hover highlight, soft borders.
 - **Forms:** rounded inputs, visible focus ring, accent-colored submit buttons.
 - **Main page:** larger tile headings with a subtle hover effect.
+- **Type-to-filter for long drop-downs:** every list with 15+ options (link existing file,
+  parent container, object type, ...) gets a small filter field above it. Matching ignores
+  case and diacritics; several words must all match. Enter does not submit the form,
+  Esc clears the filter, Arrow Down jumps into the list.
 
 ## What it leaves alone
 
@@ -34,10 +38,14 @@ but that has not been verified.
      refreshtheme/
        plugin.php
        css/theme.css
+       js/select-filter.js
    ```
 
 2. In RackTables, open **Configuration -> Plugins**, find **Refresh Theme** and click **Install**.
 3. Reload the page (hard refresh, e.g. Ctrl+Shift+R, to bypass the cached stylesheet).
+
+Upgrading from an older version: replace the directory; if Configuration -> Plugins
+offers **Upgrade**, click it (it only updates the stored version number).
 
 To remove it, click **Uninstall** in the same place (or disable it there); nothing is
 stored in the database apart from the plugin record.
@@ -54,7 +62,8 @@ Then install it once via Configuration -> Plugins as above.
 
 `plugin_refreshtheme_init()` calls `addCSSInternal('refreshtheme/css/theme.css')`. Plugins are
 initialized after RackTables adds its default `css/pi.css`, so the theme's rules take
-precedence. The stylesheet is served by RackTables itself (`?module=chrome`) from the
+precedence. It also calls `addJSInternal('refreshtheme/js/select-filter.js')` for the
+filter fields (plain JavaScript, no dependencies). Both files are served by RackTables itself (`?module=chrome`) from the
 plugins directory, so no web server changes are needed.
 
 ## Customizing colors
