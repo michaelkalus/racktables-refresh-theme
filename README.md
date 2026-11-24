@@ -19,6 +19,11 @@ It restyles the stock interface without touching RackTables core files.
   case and diacritics; several words must all match. Enter does not submit the form,
   Esc clears the filter, Arrow Down jumps into the list.
 
+- **Rackspace:** racks in fixed width columns, long rack names wrap instead of shifting racks.
+- **Mobile:** layout below 768 px (adds the viewport meta RackTables lacks): stacked columns,
+  scrollable tabs and wide tables, two column main page, 16 px form controls.
+- Filter keeps chosen options of multi-select lists, so they are always submitted.
+
 ## What it leaves alone
 
 - Rack diagram state colors (free / occupied / problem) and tag colors.

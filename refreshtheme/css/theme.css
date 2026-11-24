@@ -215,3 +215,48 @@ input.rt-select-filter.rt-no-match {
   border-color: #dc2626;
   outline-color: rgba(220,38,38,.35);
 }
+
+/* --- Rackspace: racks in columns (fixed cell width, long names wrap) --- */
+table.cooltable th > table td:has(> a > img[src*="img=minirack"]) {
+  width: 88px;
+  min-width: 88px;
+  max-width: 88px;
+  vertical-align: bottom;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}
+
+/* --- mobile --- */
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+  .mainheader { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+  .mainheader div.greeting { order: 2; float: none !important; margin-left: auto; font-size: 12px; }
+  ul.qlinks { order: 3; flex: 1 0 100%; display: flex; gap: 12px; margin: 4px 0 0; padding: 0; overflow-x: auto; white-space: nowrap; }
+  ul.qlinks li { display: block; margin: 0; padding: 0; }
+  .menubar .searchbox { float: none !important; margin: 0 0 8px; }
+  .menubar input[type=text], .menubar input:not([type]) { width: calc(100% - 64px); }
+
+  .greynavbar { overflow-x: auto; }
+  #foldertab { display: flex; flex-wrap: nowrap; white-space: nowrap; }
+  #foldertab li { display: block; }
+
+  table.objectview, table.objview,
+  table.objectview > tbody, table.objview > tbody,
+  table.objectview > tbody > tr, table.objview > tbody > tr,
+  table.objectview > tbody > tr > td, table.objview > tbody > tr > td { display: block; width: auto !important; }
+  .portlet { margin: 8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  td.pcleft > table.cooltable { display: block; overflow-x: auto; }
+  .portlet .widetable td, .portlet table.zebra td { white-space: nowrap; }
+
+  table.mainmenu, table.mainmenu > tbody { display: block; }
+  table.mainmenu > tbody > tr { display: grid; grid-template-columns: 1fr 1fr; }
+  table.mainmenu > tbody > tr > td { display: block; padding: 8px !important; }
+  table.mainmenu > tbody > tr > td:not(:has(a)) { display: none; }
+  table.mainmenu img { width: 100%; max-width: 120px; height: auto; }
+  table.mainmenu h1 { font-size: 18px; }
+
+  input, select, textarea { font-size: 16px; max-width: 100%; }
+  input.rt-select-filter { min-width: 0; width: 100% !important; }
+}

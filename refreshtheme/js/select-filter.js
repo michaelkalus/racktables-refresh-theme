@@ -8,6 +8,8 @@
  * Options are removed from / re-added to the DOM instead of being hidden,
  * because Safari ignores display:none and [hidden] on <option>.
  * The original option elements are reused, so selection state survives.
+ * Selected options always stay in the list (a detached <option> is not
+ * submitted), and the filter is cleared before the form is submitted.
  */
 (function () {
   'use strict';
@@ -60,17 +62,20 @@
       groups.forEach(function (g) { if (g.parentNode) g.parentNode.removeChild(g); });
 
       items.forEach(function (it) {
+        var match = true;
         for (var i = 0; i < words.length; i++)
-          if (it.text.indexOf(words[i]) === -1)
-            return;
-        shown++;
+          if (it.text.indexOf(words[i]) === -1) { match = false; break; }
+        // multi-select: keep chosen options attached so they are still submitted
+        if (!match && !(sel.multiple && it.opt.selected))
+          return;
+        if (match) shown++;
         if (it.group) {
           if (!it.group.parentNode) sel.appendChild(it.group);
           it.group.appendChild(it.opt);
         } else {
           sel.appendChild(it.opt);
         }
-        if (!firstMatch && !it.opt.disabled) firstMatch = it.opt;
+        if (match && !firstMatch && !it.opt.disabled) firstMatch = it.opt;
       });
 
       // Single select: keep the previous choice if still visible, otherwise
@@ -87,6 +92,11 @@
     }
 
     input.addEventListener('input', apply);
+    // put every option back before submit, whatever is filtered out
+    if (sel.form)
+      sel.form.addEventListener('submit', function () {
+        if (input.value) { input.value = ''; apply(); }
+      }, true);
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {          // do not submit the form from the filter
         e.preventDefault();

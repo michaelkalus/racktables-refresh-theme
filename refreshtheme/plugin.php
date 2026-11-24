@@ -11,7 +11,7 @@ function plugin_refreshtheme_info ()
 	(
 		'name' => 'refreshtheme',
 		'longname' => 'Refresh Theme',
-		'version' => '1.1.0',
+		'version' => '1.2.0',
 		'home_url' => '',
 	);
 }
@@ -20,6 +20,8 @@ function plugin_refreshtheme_init ()
 {
 	// Served by RackTables itself (?module=chrome&uri=...) from $local_staticdir,
 	// which defaults to the plugins/ directory.
+	// RackTables sends no viewport meta; without it phones render a zoomed out 980 px page.
+	addPageHeader ('<meta name="viewport" content="width=device-width, initial-scale=1">', 'default');
 	addCSSInternal ('refreshtheme/css/theme.css');
 	// Type-to-filter field above long <select> lists (no dependencies).
 	addJSInternal ('refreshtheme/js/select-filter.js');
