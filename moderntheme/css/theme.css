@@ -1,0 +1,203 @@
+/* RackTables Modern Theme - a light visual layer over the default pi.css.
+   Changes typography, colors, cards, tabs, tables and forms. Rack diagram
+   state colors, tag colors and page layout are left untouched. */
+
+:root {
+  --rt-bg: #f4f6f9;
+  --rt-surface: #ffffff;
+  --rt-border: #dde2ea;
+  --rt-text: #1f2937;
+  --rt-muted: #6b7280;
+  --rt-accent: #2563eb;
+  --rt-accent-hover: #1d4ed8;
+  --rt-header: #111827;
+  --rt-bar: #1e3a5f;
+  --rt-row-alt: #edf1f7;
+  --rt-row-hover: #eef4ff;
+  --rt-input-bg: #ffffff;
+  --rt-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --rt-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* --- base --- */
+body {
+  font-family: var(--rt-font);
+  font-size: 13px;
+  color: var(--rt-text);
+  background-color: var(--rt-bg);
+  -webkit-font-smoothing: antialiased;
+}
+a, .mainheader a, .menubar a {
+  font-family: var(--rt-font);
+}
+a { color: var(--rt-accent); }
+a:hover { color: var(--rt-accent-hover); }
+pre, code, textarea, .commentblock { font-family: var(--rt-mono); }
+
+/* --- top header bar --- */
+.mainheader {
+  background-color: var(--rt-header);
+  padding: 8px 12px;
+  font-size: 13px;
+}
+.mainheader a { color: #93c5fd; font-weight: 600; }
+.mainheader a:hover { color: #ffffff; text-decoration: none; }
+
+/* --- breadcrumb + search bar --- */
+.menubar {
+  background-color: var(--rt-bar);
+  font-family: var(--rt-font);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 12px;
+}
+.menubar a { color: #ffffff; opacity: .9; }
+.menubar a:hover { opacity: 1; }
+.menubar input[type=text], .menubar input:not([type]) {
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  width: 220px;
+}
+.menubar input:focus { background: #ffffff; color: var(--rt-text); outline: none; }
+
+/* --- tabs --- */
+.greynavbar {
+  background-color: var(--rt-surface);
+  border-top: none;
+  border-bottom: 1px solid var(--rt-border);
+}
+#foldertab {
+  font: 600 12px var(--rt-font);
+  border-bottom: none;
+  padding: 8px 12px 0;
+  margin: 0;
+}
+#foldertab li a {
+  display: inline-block;
+  padding: 7px 12px;
+  margin: 0 2px 0 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+#foldertab li a.std,
+#foldertab li a.std:link,
+#foldertab li a.std:visited { background: transparent; color: var(--rt-muted); }
+#foldertab li a.std:hover { background: transparent; color: var(--rt-text); border-bottom-color: var(--rt-border); }
+#foldertab li a.current,
+#foldertab li a.current:link,
+#foldertab li a.current:visited,
+#foldertab li a.current:hover {
+  background: transparent;
+  color: var(--rt-accent);
+  border-bottom: 2px solid var(--rt-accent);
+}
+#foldertab li a.attn,
+#foldertab li a.attn:link,
+#foldertab li a.attn:visited { background: transparent; color: #c2410c; }
+#foldertab li a.attn:hover { background: transparent; color: #9a3412; border-bottom-color: #fdba74; }
+
+/* --- portlets as cards --- */
+.portlet {
+  background-color: var(--rt-surface);
+  border: 1px solid var(--rt-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.05);
+  padding: 12px 14px;
+  margin: 8px;
+}
+.portlet h2 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 2px 0 12px;
+  color: var(--rt-text);
+}
+h1 { font-weight: 600; font-size: 22px; }
+
+/* --- tables --- */
+.widetable th, table.cooltable th, .zebra th, .zebra0 th {
+  font-weight: 600;
+  color: var(--rt-muted);
+  font-size: 12px;
+  border-bottom: 1px solid var(--rt-border);
+  padding: 6px 8px;
+}
+.widetable td, table.cooltable td { padding: 5px 8px; }
+table.zebra tbody tr:nth-child(2n+3):not(.highlight),
+table.zebra0 tbody tr:nth-child(2n+1):not(.highlight) { background-color: var(--rt-surface); }
+table.zebra tbody tr:nth-child(2n):not(.highlight),
+table.zebra0 tbody tr:nth-child(2n):not(.highlight) { background-color: var(--rt-row-alt); }
+table.zebra tbody tr:hover:not(.highlight),
+table.zebra0 tbody tr:hover:not(.highlight),
+.widetable tr:hover > td { background-color: var(--rt-row-hover); }
+.row_even { background-color: var(--rt-surface); }
+.row_odd { background-color: var(--rt-row-alt); }
+
+/* --- forms --- */
+input, select, textarea {
+  font-family: var(--rt-font);
+  font-size: 13px;
+  background-color: var(--rt-input-bg);
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 3px 6px;
+}
+textarea { font-family: var(--rt-mono); }
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid rgba(37,99,235,.35);
+  border-color: var(--rt-accent);
+}
+input[type=checkbox], input[type=radio], input.icon, input[type=image] {
+  border: none; padding: 0; background: transparent;
+}
+input[type=submit], button {
+  background: var(--rt-accent);
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+input[type=submit]:hover, button:hover { background: var(--rt-accent-hover); }
+
+/* --- main page tiles --- */
+.mainmenu a { color: var(--rt-text); }
+.mainmenu h1 { font-size: 28px; font-weight: 700; color: var(--rt-bar); letter-spacing: -0.01em; }
+.mainmenu img { opacity: .9; transition: transform .15s ease, opacity .15s ease; }
+.mainmenu a:hover { text-decoration: none; color: var(--rt-accent); }
+.mainmenu a:hover img { opacity: 1; transform: translateY(-2px); }
+
+/* --- rack diagram: font and grid only, state colors untouched --- */
+.rack, th.rack, .molecule { font-family: var(--rt-font); font-size: 11px; }
+.rack a { font-family: var(--rt-font); font-size: 10.5px; font-weight: 600; }
+.rack, .rack th, .rack td { border-color: #94a3b8; }
+.rackspace h2 { font: 600 20px var(--rt-font); }
+.rackspace h3 { font: 600 16px var(--rt-font); }
+
+/* --- messages --- */
+.msg_error, .msg_success, .msg_warning, .msg_neutral, .msg_200, .msg_300, .msg_500 {
+  border-radius: 6px;
+}
+div.commentblock {
+  border: 1px solid var(--rt-border);
+  border-radius: 6px;
+  background: var(--rt-row-alt);
+}
+.dashed { border-color: var(--rt-border); }
+
+/* --- soften hard table borders (border=1 attribute), except rack diagram --- */
+table[border]:not(.rack):not(.molecule) {
+  border: 1px solid var(--rt-border);
+  border-radius: 6px;
+}
+.portlet table[border]:not(.rack):not(.molecule) { background: var(--rt-surface); }
+
+/* --- clearer row separation in lists (objects, IPs, ports) --- */
+table.zebra > tbody > tr > td,
+table.zebra0 > tbody > tr > td,
+table.cooltable > tbody > tr > td,
+.widetable > tbody > tr > td {
+  border-bottom: 1px solid #dfe4ec;
+}
