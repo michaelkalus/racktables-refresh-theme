@@ -1,4 +1,4 @@
-# RackTables Modern Theme
+# RackTables Refresh Theme
 
 A light, modern visual layer for [RackTables](https://www.racktables.org/), packaged as a plugin.
 It restyles the stock interface without touching RackTables core files.
@@ -27,16 +27,16 @@ but that has not been verified.
 
 ## Installation
 
-1. Copy the `moderntheme` directory into the RackTables `plugins/` directory:
+1. Copy the `refreshtheme` directory into the RackTables `plugins/` directory:
 
    ```
    plugins/
-     moderntheme/
+     refreshtheme/
        plugin.php
        css/theme.css
    ```
 
-2. In RackTables, open **Configuration -> Plugins**, find **Modern Theme** and click **Install**.
+2. In RackTables, open **Configuration -> Plugins**, find **Refresh Theme** and click **Install**.
 3. Reload the page (hard refresh, e.g. Ctrl+Shift+R, to bypass the cached stylesheet).
 
 To remove it, click **Uninstall** in the same place (or disable it there); nothing is
@@ -45,14 +45,14 @@ stored in the database apart from the plugin record.
 ### Docker image
 
 ```dockerfile
-COPY moderntheme /var/www/racktables/plugins/moderntheme
+COPY refreshtheme /var/www/racktables/plugins/refreshtheme
 ```
 
 Then install it once via Configuration -> Plugins as above.
 
 ## How it works
 
-`plugin_moderntheme_init()` calls `addCSSInternal('moderntheme/css/theme.css')`. Plugins are
+`plugin_refreshtheme_init()` calls `addCSSInternal('refreshtheme/css/theme.css')`. Plugins are
 initialized after RackTables adds its default `css/pi.css`, so the theme's rules take
 precedence. The stylesheet is served by RackTables itself (`?module=chrome`) from the
 plugins directory, so no web server changes are needed.
