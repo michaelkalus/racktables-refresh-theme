@@ -3,7 +3,19 @@
 A light, modern visual layer for [RackTables](https://www.racktables.org/), packaged as a plugin.
 It restyles the stock interface without touching RackTables core files.
 
-> Screenshots: coming soon (taken on a demo instance with generated data).
+## Screenshots
+
+Taken on a demo instance with generated data (no real records).
+
+| | |
+|---|---|
+| **Main page**<br>![Main page](screenshots/main-page.png) | **Objects**<br>![Objects](screenshots/objects.png) |
+| **Object**<br>![Object](screenshots/object.png) | **Rack**<br>![Rack](screenshots/rack.png) |
+| **Rackspace**<br>![Rackspace](screenshots/rackspace.png) | **IPv4 network**<br>![IPv4 network](screenshots/ipv4-network.png) |
+
+**Mobile**
+
+<img src="screenshots/mobile-main-page.png" width="260" alt="Mobile main page"> <img src="screenshots/mobile-object.png" width="260" alt="Mobile object">
 
 ## What it changes
 
