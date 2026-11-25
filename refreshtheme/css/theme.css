@@ -260,3 +260,18 @@ table.cooltable th > table td:has(> a > img[src*="img=minirack"]) {
   input, select, textarea { font-size: 16px; max-width: 100%; }
   input.rt-select-filter { min-width: 0; width: 100% !important; }
 }
+
+/* --- summary: no green background behind "Explicit/Implicit tags" (pi.css th.tagchain) --- */
+th.tagchain, td.tagchain { background: transparent !important; }
+
+/* --- Reports: wide nested tables scroll inside the report instead of widening the page --- */
+@media (max-width: 768px) {
+  .pagebar > table[align=center]:has(h3) { display: block; max-width: 100%; overflow-x: hidden; }
+  .pagebar > table[align=center]:has(h3) > tbody { display: block; }
+  .pagebar > table[align=center]:has(h3) > tbody > tr { display: flex; align-items: baseline; gap: 12px; }
+  .pagebar > table[align=center]:has(h3) > tbody > tr > td.tdright { flex: 1 1 auto; white-space: normal; text-align: left; }
+  .pagebar > table[align=center]:has(h3) > tbody > tr > td.tdleft { border-bottom: 0; }
+  .pagebar > table[align=center]:has(h3) > tbody > tr > td.tdleft { flex: 0 0 auto; text-align: right; }
+  .pagebar > table[align=center]:has(h3) > tbody > tr > th[colspan],
+  .pagebar > table[align=center]:has(h3) > tbody > tr > td[colspan] { display: block; flex: 1 1 100%; min-width: 0; overflow-x: auto; }
+}

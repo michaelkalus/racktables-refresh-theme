@@ -11,7 +11,7 @@ function plugin_refreshtheme_info ()
 	(
 		'name' => 'refreshtheme',
 		'longname' => 'Refresh Theme',
-		'version' => '1.2.0',
+		'version' => '1.2.1',
 		'home_url' => '',
 	);
 }
